@@ -528,14 +528,14 @@ fn ipv6_properties() {
                 assert!(!ip!($s).is_global());
             }
             if ($mask & unicast_link_local) == unicast_link_local {
-                assert!(ip!($s).is_unicast_link_local());
+                assert!(ip!($s).has_unicast_link_local_scope());
             } else {
-                assert!(!ip!($s).is_unicast_link_local());
+                assert!(!ip!($s).has_unicast_link_local_scope());
             }
             if ($mask & unicast_global) == unicast_global {
-                assert!(ip!($s).is_unicast_global());
+                assert!(ip!($s).has_unicast_global_scope());
             } else {
-                assert!(!ip!($s).is_unicast_global());
+                assert!(!ip!($s).has_unicast_global_scope());
             }
             if ($mask & documentation) == documentation {
                 assert!(ip!($s).is_documentation());
@@ -968,8 +968,8 @@ fn ipv6_const() {
     const IS_UNIQUE_LOCAL: bool = IP_ADDRESS.is_unique_local();
     assert!(!IS_UNIQUE_LOCAL);
 
-    const IS_UNICAST_LINK_LOCAL: bool = IP_ADDRESS.is_unicast_link_local();
-    assert!(!IS_UNICAST_LINK_LOCAL);
+    const HAS_UNICAST_LINK_LOCAL_SCOPE: bool = IP_ADDRESS.has_unicast_link_local_scope();
+    assert!(!HAS_UNICAST_LINK_LOCAL_SCOPE);
 
     const IS_DOCUMENTATION: bool = IP_ADDRESS.is_documentation();
     assert!(!IS_DOCUMENTATION);
