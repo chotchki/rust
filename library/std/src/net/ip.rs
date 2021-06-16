@@ -1618,6 +1618,30 @@ impl Ipv6Addr {
             && !self.is_benchmarking()
     }
 
+    /// Returns [`true`] if this is an address reserved for documentation
+    /// (`2001:db8::/32`).
+    ///
+    /// This property is defined in [IETF RFC 3849].
+    ///
+    /// [IETF RFC 3849]: https://tools.ietf.org/html/rfc3849
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// #![feature(ip)]
+    ///
+    /// use std::net::Ipv6Addr;
+    ///
+    /// assert_eq!(Ipv6Addr::new(0, 0, 0, 0, 0, 0xffff, 0xc00a, 0x2ff).is_documentation(), false);
+    /// assert_eq!(Ipv6Addr::new(0x2001, 0xdb8, 0, 0, 0, 0, 0, 0).is_documentation(), true);
+    /// ```
+    #[rustc_const_unstable(feature = "const_ipv6", issue = "76205")]
+    #[unstable(feature = "ip", issue = "27709")]
+    #[inline]
+    pub const fn is_documentation(&self) -> bool {
+        (self.segments()[0] == 0x2001) && (self.segments()[1] == 0xdb8)
+    }
+
     /// Returns the address's multicast scope if the address is multicast.
     ///
     /// # Examples
