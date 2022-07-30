@@ -1497,31 +1497,6 @@ impl Ipv6Addr {
         (self.segments()[0] & 0xffc0) == 0xfe80
     }
 
-    /// Returns [`true`] if this is an address reserved for documentation
-    /// (`2001:db8::/32`).
-    ///
-    /// This property is defined in [IETF RFC 3849].
-    ///
-    /// [IETF RFC 3849]: https://tools.ietf.org/html/rfc3849
-    ///
-    /// # Examples
-    ///
-    /// ```
-    /// #![feature(ip)]
-    ///
-    /// use std::net::Ipv6Addr;
-    ///
-    /// assert_eq!(Ipv6Addr::new(0, 0, 0, 0, 0, 0xffff, 0xc00a, 0x2ff).is_documentation(), false);
-    /// assert_eq!(Ipv6Addr::new(0x2001, 0xdb8, 0, 0, 0, 0, 0, 0).is_documentation(), true);
-    /// ```
-    #[rustc_const_unstable(feature = "const_ipv6", issue = "76205")]
-    #[unstable(feature = "ip", issue = "27709")]
-    #[must_use]
-    #[inline]
-    pub const fn is_documentation(&self) -> bool {
-        (self.segments()[0] == 0x2001) && (self.segments()[1] == 0xdb8)
-    }
-
     /// Returns [`true`] if this is an address reserved for benchmarking (`2001:2::/48`).
     ///
     /// This property is defined in [IETF RFC 5180], where it is mistakenly specified as covering the range `2001:0200::/48`.
