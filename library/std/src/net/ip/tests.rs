@@ -977,8 +977,8 @@ fn ipv6_const() {
     const IS_BENCHMARKING: bool = IP_ADDRESS.is_benchmarking();
     assert!(!IS_BENCHMARKING);
 
-    const IS_UNICAST_GLOBAL: bool = IP_ADDRESS.is_unicast_global();
-    assert!(!IS_UNICAST_GLOBAL);
+    const HAS_UNICAST_GLOBAL_SCOPE: bool = IP_ADDRESS.has_unicast_global_scope();
+    assert!(!HAS_UNICAST_GLOBAL_SCOPE);
 
     const MULTICAST_SCOPE: Option<Ipv6MulticastScope> = IP_ADDRESS.multicast_scope();
     assert_eq!(MULTICAST_SCOPE, None);
