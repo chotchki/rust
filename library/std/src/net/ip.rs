@@ -1389,7 +1389,7 @@ impl Ipv6Addr {
                 ))
             || self.is_documentation()
             || self.is_unique_local()
-            || self.is_unicast_link_local())
+            || self.has_unicast_link_local_scope())
     }
 
     /// Returns [`true`] if this is a unique local address (`fc00::/7`).
@@ -1586,7 +1586,7 @@ impl Ipv6Addr {
     pub const fn has_unicast_global_scope(&self) -> bool {
         self.is_unicast()
             && !self.is_loopback()
-            && !self.has_unicast_link_local()
+            && !self.has_unicast_link_local_scope()
             && !self.is_unique_local()
             && !self.is_unspecified()
             && !self.is_documentation()
