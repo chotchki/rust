@@ -668,7 +668,7 @@ fn ipv6_properties() {
     check!(
         "fdff:ffff::",
         &[0xfd, 0xff, 0xff, 0xff, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        unique_local | unicast_global
+        unique_local
     );
 
     check!(
@@ -762,7 +762,7 @@ fn ipv6_properties() {
     check!(
         "2001:db8:85a3::8a2e:370:7334",
         &[0x20, 1, 0xd, 0xb8, 0x85, 0xa3, 0, 0, 0, 0, 0x8a, 0x2e, 3, 0x70, 0x73, 0x34],
-        documentation | unicast_global
+        documentation
     );
 
     check!(
